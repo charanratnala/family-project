@@ -6,10 +6,15 @@ import org.springframework.stereotype.Service;
 
 import com.guru.family.dto.RegistrationDto;
 import com.guru.family.entity.RegistrationEntity;
+import com.guru.family.entity.Roles;
 import com.guru.family.repo.RegistrationRepo;
+import com.guru.family.repo.Rolesrepo;
 
 @Service("registerService")
 public class RegistrationService {
+	
+	@Autowired
+	Rolesrepo rolesrepo;
 	
 	@Autowired
 	ModelMapper modelMapper;
@@ -31,6 +36,17 @@ public class RegistrationService {
 	return	registrationRepo.save(registrationEntity);
 		
 		
+		
+		
+	}
+
+	public void addRole(String customName) {
+		
+		Roles rol= new Roles();
+		
+		rol.setName(customName);
+		
+		rolesrepo.save(rol);
 		
 		
 	}

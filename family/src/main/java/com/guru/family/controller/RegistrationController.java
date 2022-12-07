@@ -2,7 +2,9 @@ package com.guru.family.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -30,6 +32,21 @@ public class RegistrationController {
 		
 
 	}
+	
+	
+	
+	@PostMapping("/createRole/{customName}")
+	@ResponseStatus(value=HttpStatus.CONFLICT)
+	public void customRole(@PathVariable String customName)
+	{
+		
+		registrationService.addRole(customName);
+		
+		
+		
+	}
+	
+	
 	
 	
 	
