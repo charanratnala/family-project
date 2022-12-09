@@ -3,6 +3,7 @@ package com.guru.family.security;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,7 +28,7 @@ public class ImpleUserDetails  implements UserDetails{
 		// TODO Auto-generated method stub
 		
 		
-	List<Roles> re=	registrationEntity.getRoles();
+	Set<Roles> re=	registrationEntity.getRoles();
 	
 	List<SimpleGrantedAuthority> authorities= new ArrayList<>();
 	

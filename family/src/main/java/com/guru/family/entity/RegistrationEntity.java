@@ -1,14 +1,16 @@
 package com.guru.family.entity;
 
 import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -23,7 +25,7 @@ public class RegistrationEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String password;
@@ -36,8 +38,9 @@ public class RegistrationEntity {
 	private String gender;
 	
 	
-	@OneToMany(cascade = CascadeType.PERSIST)
-	List<Roles> roles= new ArrayList<>();
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+	@JoinColumn(name="role_ref",referencedColumnName = "id")
+	Set<Roles> roles= new HashSet<Roles>();
 	
 	
 	
